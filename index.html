@@ -15,7 +15,7 @@
             <p class="text-slate-400 text-sm mt-1">Your everyday micro-tools.</p>
         </div>
         <nav class="px-4 pb-6 space-y-1">
-            <a href="#" class="block px-3 py-2 rounded-md bg-slate-800 text-white font-medium">All Tools</a>
+            <a href="index.html" class="block px-3 py-2 rounded-md bg-slate-800 text-white font-medium border-l-4 border-blue-500">All Tools</a>
             <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Text Utilities</a>
             <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Calculators</a>
             <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Security</a>
@@ -28,64 +28,64 @@
         <header class="bg-white shadow-sm px-6 py-4 flex items-center justify-between sticky top-0 z-10">
             <div class="w-full max-w-2xl relative">
                 <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input type="text" id="searchInput" placeholder="Search for a tool (e.g., 'Word Counter')..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="text" id="searchInput" placeholder="Search for a tool (e.g., 'Case Converter')..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
         </header>
 
         <!-- Tool Grid -->
         <div class="p-6 lg:p-10 flex-1">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold text-gray-900">Featured Tools</h2>
+                <h2 class="text-xl font-semibold text-gray-900">All Tools</h2>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="toolGrid">
                 
-                <!-- Card 1 -->
+                <!-- Word Counter -->
                 <a href="word-counter.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="word counter text utilities">
                     <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                     </div>
                     <h3 class="text-lg font-medium text-gray-900 mb-1">Word Counter</h3>
-                    <p class="text-sm text-gray-500">Instantly count words, characters, and reading time from your text.</p>
+                    <p class="text-sm text-gray-500">Count words, characters, and reading time.</p>
                 </a>
 
-                <!-- Card 2 -->
-                <a href="percentage-calculator.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-green-400 transition p-5 tool-card" data-title="percentage calculator math">
-                    <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                <!-- Case Converter -->
+                <a href="case-converter.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="case converter uppercase lowercase text utilities">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
                     </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-1">Percentage Calc</h3>
-                    <p class="text-sm text-gray-500">Easily find percentages, increases, decreases, and ratios.</p>
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Case Converter</h3>
+                    <p class="text-sm text-gray-500">Transform text to UPPERCASE, lowercase, or Title Case.</p>
                 </a>
 
-                <!-- Card 3 -->
-                <a href="password-generator.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-purple-400 transition p-5 tool-card" data-title="secure password generator security">
-                    <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <!-- Remove Duplicates -->
+                <a href="remove-duplicates.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="remove duplicate lines text utilities cleaner">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                     </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-1">Password Gen</h3>
-                    <p class="text-sm text-gray-500">Generate secure, random passwords with custom parameters.</p>
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Remove Duplicates</h3>
+                    <p class="text-sm text-gray-500">Instantly clean lists by filtering out repeating items.</p>
                 </a>
 
-            </div>
-        </div>
-    </main>
+                <!-- Text to Slug -->
+                <a href="slug-generator.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="text to slug converter url seo utilities">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Text to Slug</h3>
+                    <p class="text-sm text-gray-500">Generate clean, SEO-friendly URL slugs from titles.</p>
+                </a>
 
-    <script>
-        // Simple client-side search filtering
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.tool-card');
-            
-            cards.forEach(card => {
-                const searchData = card.getAttribute('data-title').toLowerCase();
-                if(searchData.includes(term)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                <!-- Find and Replace -->
+                <a href="find-replace.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="find and replace string text editor utilities">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Find & Replace</h3>
+                    <p class="text-sm text-gray-500">Swap out words or phrases across massive text blocks.</p>
+                </a>
+
+                <!-- Emoji Stripper -->
+                <a href="remove-emojis.html" class="group block bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-400 transition p-5 tool-card" data-title="remove emojis stripper clean text utilities">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill
