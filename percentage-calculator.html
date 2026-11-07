@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator - MegaToolbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+    
+    <header class="bg-white shadow-sm px-6 py-4 flex items-center">
+        <a href="index.html" class="flex items-center text-gray-600 hover:text-green-600 transition">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Dashboard
+        </a>
+    </header>
+
+    <main class="flex-1 p-6 lg:p-10 max-w-4xl mx-auto w-full">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Percentage Calculator</h1>
+        <p class="text-gray-500 mb-8">Calculate percentages, ratios, and differences instantly.</p>
+
+        <div class="space-y-6">
+            
+            <!-- Calc 1: What is X% of Y -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">What is <span class="text-green-600">X%</span> of <span class="text-green-600">Y</span>?</h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <span class="text-gray-600 font-medium">What is</span>
+                    <input type="number" id="c1-x" class="w-24 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="X">
+                    <span class="text-gray-600 font-medium">% of</span>
+                    <input type="number" id="c1-y" class="w-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="Y">
+                    <button onclick="calc1()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">=</button>
+                    <div id="c1-res" class="text-xl font-bold text-gray-900 min-w-[50px]"></div>
+                </div>
+            </div>
+
+            <!-- Calc 2: X is what percent of Y -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4"><span class="text-green-600">X</span> is what percent of <span class="text-green-600">Y</span>?</h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <input type="number" id="c2-x" class="w-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="X">
+                    <span class="text-gray-600 font-medium">is what % of</span>
+                    <input type="number" id="c2-y" class="w-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="Y">
+                    <button onclick="calc2()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">=</button>
+                    <div id="c2-res" class="text-xl font-bold text-gray-900 min-w-[50px]"></div>
+                </div>
+            </div>
+
+            <!-- Calc 3: Increase/Decrease -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Percentage increase/decrease from <span class="text-green-600">X</span> to <span class="text-green-600">Y</span></h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <span class="text-gray-600 font-medium">From</span>
+                    <input type="number" id="c3-x" class="w-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="X">
+                    <span class="text-gray-600 font-medium">to</span>
+                    <input type="number" id="c3-y" class="w-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 outline-none" placeholder="Y">
+                    <button onclick="calc3()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">=</button>
+                    <div id="c3-res" class="text-xl font-bold text-gray-900 min-w-[50px]"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function calc1() {
+            const x = parseFloat(document.getElementById('c1-x').value);
+            const y = parseFloat(document.getElementById('c1-y').value);
+            const res = document.getElementById('c1-res');
+            if(!isNaN(x) && !isNaN(y)) res.innerHTML = +((x / 100) * y).toFixed(4);
+            else res.innerHTML = "Err";
+        }
+
+        function calc2() {
+            const x = parseFloat(document.getElementById('c2-x').value);
+            const y = parseFloat(document.getElementById('c2-y').value);
+            const res = document.getElementById('c2-res');
+            if(!isNaN(x) && !isNaN(y) && y !== 0) res.innerHTML = +((x / y) * 100).toFixed(4) + "%";
+            else res.innerHTML = "Err";
+        }
+
+        function calc3() {
+            const x = parseFloat(document.getElementById('c3-x').value);
+            const y = parseFloat(document.getElementById('c3-y').value);
+            const res = document.getElementById('c3-res');
+            if(!isNaN(x) && !isNaN(y) && x !== 0) {
+                const diff = y - x;
+                const percent = (diff / x) * 100;
+                res.innerHTML = +(percent).toFixed(4) + "%";
+                res.className = percent >= 0 ? "text-xl font-bold text-green-600" : "text-xl font-bold text-red-600";
+            } else res.innerHTML = "Err";
+        }
+    </script>
+</body>
+</html>
