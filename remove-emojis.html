@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Emojis from Text - Clean Text Formatting Tool</title>
+    <meta name="description" content="Quickly strip emojis, symbols, and pictographs from your text blocks. Perfect for cleaning social media data, academic papers, and databases.">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+
+    <aside class="w-full md:w-64 bg-slate-900 text-white flex-shrink-0">
+        <div class="p-6">
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-blue-400">Mega<span class="text-white">Toolbox</span></a>
+        </div>
+        <nav class="px-4 pb-6 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">All Tools</a>
+            <a href="#" class="block px-3 py-2 rounded-md bg-slate-800 text-white font-medium border-l-4 border-blue-500">Text Utilities</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Calculators</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <div class="p-6 lg:p-10 max-w-5xl mx-auto w-full">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Emoji Stripper</h1>
+            <p class="text-gray-500 mb-6">Clean social media posts and comments by removing all emojis instantly.</p>
+
+            <!-- Tool UI -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-10">
+                <textarea id="emojiInput" class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-4 text-lg" placeholder="Paste text containing emojis here... 🚀🔥✨"></textarea>
+                
+                <div class="flex gap-3">
+                    <button onclick="stripEmojis()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition">Remove Emojis</button>
+                    <button onclick="copyCleanText()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md font-medium transition">Copy Result</button>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <article class="prose max-w-none text-gray-600">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3">Why Remove Emojis from Text?</h2>
+                <p class="mb-4">While emojis are fantastic for social media engagement, they often break formal formatting constraints. If you are extracting YouTube comments for data analysis, scraping social media posts into a legacy database, or formatting a professional report, rogue pictographs can cause database crashes or formatting errors.</p>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2 mt-6">How It Works</h3>
+                <p class="mb-4">Our Emoji Stripper tool utilizes a specialized Regular Expression (Regex) that targets the specific Unicode blocks assigned to pictographs, emoticons, and miscellaneous symbols. It strips them from your document while leaving standard punctuation and alphanumeric characters perfectly intact.</p>
+            </article>
+        </div>
+    </main>
+
+    <script>
+        function stripEmojis() {
+            const input = document.getElementById('emojiInput');
+            if(!input.value) return;
+
+            // Regex covering standard emoji unicode ranges
+            const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{2300}-\u{23FF}]/gu;
+            
+            input.value = input.value.replace(emojiRegex, '');
+        }
+
+        function copyCleanText() {
+            const input = document.getElementById('emojiInput');
+            input.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
+</html>

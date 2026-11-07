@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicate Lines - Free List Cleaner Tool</title>
+    <meta name="description" content="Clean your lists, emails, and data sets instantly. Remove duplicate lines and repeating text automatically with this free tool.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does the duplicate line remover work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool scans your text line by line. It stores the first instance of every unique line and automatically deletes any exact matches that appear further down in the text."
+        }
+      }]
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+
+    <!-- Sidebar with 'Text Utilities' Active -->
+    <aside class="w-full md:w-64 bg-slate-900 text-white flex-shrink-0">
+        <div class="p-6">
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-blue-400">Mega<span class="text-white">Toolbox</span></a>
+        </div>
+        <nav class="px-4 pb-6 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">All Tools</a>
+            <a href="#" class="block px-3 py-2 rounded-md bg-slate-800 text-white font-medium border-l-4 border-blue-500">Text Utilities</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Calculators</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <div class="p-6 lg:p-10 max-w-5xl mx-auto w-full">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Remove Duplicate Lines</h1>
+            <p class="text-gray-500 mb-6">Instantly clean lists by filtering out repeating items.</p>
+
+            <!-- Tool UI -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-10">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="flex items-center space-x-2 text-sm text-gray-600">
+                        <input type="checkbox" id="caseSensitive" class="rounded text-blue-600" checked>
+                        <span>Case Sensitive</span>
+                    </label>
+                    <span id="removedCount" class="text-sm font-medium text-green-600 hidden">0 duplicates removed</span>
+                </div>
+                <textarea id="listInput" class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-4 text-lg whitespace-pre" placeholder="Paste your messy list here..."></textarea>
+                
+                <div class="flex gap-3">
+                    <button onclick="removeDuplicates()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition">Remove Duplicates</button>
+                    <button onclick="copyList()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md font-medium transition">Copy</button>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <article class="prose max-w-none text-gray-600">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3">Why Use a Duplicate Line Remover?</h2>
+                <p class="mb-4">When compiling research, merging email lists, or aggregating data from multiple sources, duplicate entries are inevitable. Sorting through hundreds or thousands of lines manually is impossible. Our free duplicate line remover processes massive lists instantly entirely within your browser.</p>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2 mt-6">Common Use Cases</h3>
+                <ul class="list-disc pl-6 mb-4 space-y-2">
+                    <li><strong>Email Marketing:</strong> Clean your subscriber CSV files to ensure you don't send the same newsletter to a customer twice.</li>
+                    <li><strong>Coding & Data Analysis:</strong> Remove repeating arrays, JSON strings, or database entries before migration.</li>
+                    <li><strong>SEO & Keyword Research:</strong> Consolidate massive lists of target keywords by stripping out overlaps from different analytics tools.</li>
+                </ul>
+                <p><strong>Note on Privacy:</strong> Your data never leaves your device. The duplicate removal script runs entirely on your local machine using client-side JavaScript.</p>
+            </article>
+        </div>
+    </main>
+
+    <script>
+        function removeDuplicates() {
+            const input = document.getElementById('listInput');
+            const isCaseSensitive = document.getElementById('caseSensitive').checked;
+            const status = document.getElementById('removedCount');
+            
+            if (!input.value) return;
+
+            const lines = input.value.split('\n');
+            const uniqueLines = [];
+            const seen = new Set();
+            let duplicates = 0;
+
+            lines.forEach(line => {
+                const checkLine = isCaseSensitive ? line : line.toLowerCase();
+                if (!seen.has(checkLine)) {
+                    seen.add(checkLine);
+                    uniqueLines.push(line);
+                } else {
+                    duplicates++;
+                }
+            });
+
+            input.value = uniqueLines.join('\n');
+            status.textContent = `${duplicates} duplicate(s) removed`;
+            status.classList.remove('hidden');
+        }
+
+        function copyList() {
+            const input = document.getElementById('listInput');
+            input.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
+</html>

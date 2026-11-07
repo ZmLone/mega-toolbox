@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Slug Converter - Generate SEO Friendly URLs</title>
+    <meta name="description" content="Instantly convert titles and text into SEO-friendly URL slugs. Removes special characters, spaces, and formats text for web links.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What makes a URL slug SEO friendly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An SEO-friendly slug is lowercase, uses hyphens instead of spaces to separate words, and removes all special characters. This makes the URL easy for both search engines and humans to read."
+        }
+      }]
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+
+    <aside class="w-full md:w-64 bg-slate-900 text-white flex-shrink-0">
+        <div class="p-6">
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-blue-400">Mega<span class="text-white">Toolbox</span></a>
+        </div>
+        <nav class="px-4 pb-6 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">All Tools</a>
+            <a href="#" class="block px-3 py-2 rounded-md bg-slate-800 text-white font-medium border-l-4 border-blue-500">Text Utilities</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-slate-300 hover:bg-slate-700 hover:text-white transition">Calculators</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <div class="p-6 lg:p-10 max-w-4xl mx-auto w-full">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Text to Slug Converter</h1>
+            <p class="text-gray-500 mb-6">Transform article titles into clean, valid URL slugs for your website.</p>
+
+            <!-- Tool UI -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-10 space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Input Title / Text</label>
+                    <input type="text" id="rawText" oninput="generateSlug()" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. 10 Best Ways to Format URLs in 2026!">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Generated URL Slug</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="slugOutput" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-blue-600 font-mono outline-none" readonly placeholder="10-best-ways-to-format-urls-in-2026">
+                        <button onclick="copySlug()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-lg font-medium transition whitespace-nowrap">Copy Slug</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <article class="prose max-w-none text-gray-600">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3">What is a URL Slug?</h2>
+                <p class="mb-4">A URL slug is the exact part of a web address that identifies a specific page on a website in an easy-to-read format. For example, in the URL <code>megatools.com/text-utilities/text-to-slug</code>, the string <strong>text-to-slug</strong> is the slug.</p>
+                
+                <h3 class="text-xl font-semibold text-gray-800 mb-2 mt-6">Why Use a Slug Generator?</h3>
+                <p class="mb-4">Browsers and web servers cannot read spaces or special characters like commas, apostrophes, or emojis in a URL string without "encoding" them (turning a space into <code>%20</code>). If you use a raw title as a URL, it becomes incredibly messy. Our tool automatically formats your text to standard web conventions:</p>
+                <ul class="list-disc pl-6 mb-4 space-y-2">
+                    <li>Converts all letters to lowercase.</li>
+                    <li>Replaces all spaces with hyphens (-).</li>
+                    <li>Strips out punctuation marks, ampersands, and special symbols.</li>
+                    <li>Removes leading or trailing hyphens.</li>
+                </ul>
+            </article>
+        </div>
+    </main>
+
+    <script>
+        function generateSlug() {
+            const text = document.getElementById('rawText').value;
+            const slugOutput = document.getElementById('slugOutput');
+            
+            const slug = text.toString().toLowerCase().trim()
+                .replace(/\s+/g, '-')           // Replace spaces with -
+                .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                .replace(/^-+/, '')             // Trim - from start of text
+                .replace(/-+$/, '');            // Trim - from end of text
+                
+            slugOutput.value = slug;
+        }
+
+        function copySlug() {
+            const output = document.getElementById('slugOutput');
+            if(!output.value) return;
+            output.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
+</html>
